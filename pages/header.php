@@ -16,11 +16,11 @@
             </div>
             <ul class="nav navbar-nav navbar-right">
                 <?php if (isset($_SESSION['cLogin']) && !empty($_SESSION['cLogin'])): ?>
-                    <li><a href="/classificados/pages/meus-anuncios.php">Meus anuncios</a></li>
-                    <li><a href="/classificados/pages/sair.php">Sair</a></li>
+                    <li><a href="/classificados/meus-anuncios.php">Meus anuncios</a></li>
+                    <li><a href="/classificados/sair.php">Sair</a></li>
                 <?php else: ?>
-                    <li><a href="/classificados/pages/cadastre-se.php">Cadastre-se</a></li>
-                    <li><a href="/classificados/pages/login.php">Login</a></li>
+                    <li><a href="/classificados/cadastre-se.php">Cadastre-se</a></li>
+                    <li><a href="/classificados/login.php">Login</a></li>
                 <?php endif; ?>
             </ul>
         </div>
