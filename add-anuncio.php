@@ -6,6 +6,26 @@ if (empty($_SESSION['cLogin'])) {
     <?php
     exit;
 }
+require 'classes/anuncios.class.php';
+$a = new Anuncios();
+if (isset($_POST['titulo']) && !empty($_POST['titulo'])) {
+    $titulo = addslashes($_POST['titulo']);
+    $valor = addslashes($_POST['valor']);
+    $descricao = addslashes($_POST['descricao']);
+    $estado = addslashes($_POST['estado']);
+    $categoria = addslashes($_POST['categoria']);
+    
+
+    if ($a->addAnuncio($titulo, $valor, $descricao, $estado, $categoria)) {
+        ?>
+        <div class="alert alert-success">
+            Anúncio adicionado com sucesso!
+            </div>
+        <?php
+    }
+}
+
+
 ?>
 <div class="container">
     <h1> Meus Anúncios - Adicionar Anúncio </h1>
@@ -25,15 +45,15 @@ if (empty($_SESSION['cLogin'])) {
         </div>
         <div class="form-group">
             <label for="titulo">Título</label>
-            <select name="titulo" id="titulo" class="form-control">
+            <input name="titulo" id="titulo" class="form-control">
                 <option value="">Selecione um título</option>
-            </select>
+            </input>
         </div>
         <div class="form-group">
             <label for="valor">Valor</label>
-            <select name="valor" id="valor" class="form-control">
+            <input name="valor" id="valor" class="form-control">
                 <option value="">Selecione um valor</option>
-            </select>
+            </input>
         </div>
         <div class="form-group">
             <label for="descricao">Descrição</label>
