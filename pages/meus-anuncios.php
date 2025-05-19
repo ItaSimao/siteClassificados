@@ -1,4 +1,4 @@
-<?php require 'pages/header.php'; ?>
+<?php require 'header.php'; ?>
 <?php
 if (empty($_SESSION['cLogin'])) {
     ?>
@@ -39,4 +39,4 @@ if (empty($_SESSION['cLogin'])) {
         </tbody>
     </table>
 </div>
-<?php require 'pages/footer.php'; ?>
+<?php require 'footer.php'; ?>
