@@ -1,12 +1,16 @@
-<?php require 'header.php'; ?>
 <?php
+require __DIR__ . '/header.php';
+
 if (empty($_SESSION['cLogin'])) {
-    ?>
-    <script type="text/javascript">window.location.href = "login.php";</script>
-    <?php
+    header('Location: login.php');
     exit;
 }
+require __DIR__ . '/../classes/anuncios.class.php';
+
+$a = new Anuncios();
+$anuncios = $a->getMeusAnuncios();
 ?>
+
 <div class="container">
     <h1>Meus Anúncios</h1>
     <a href="add-anuncio.php" class="btn btn-primary">Adicionar Anúncio</a>
@@ -19,24 +23,29 @@ if (empty($_SESSION['cLogin'])) {
                 <th>Ações</th>
             </tr>
         </thead>
-        <tbody>
-            <?php
-            require 'classes/anuncios.class.php';
-            $a = new Anuncios();
-            $anuncios = $a->getMeusAnuncios();
-            foreach ($anuncios as $anuncio):
-                ?>
-                <tr>
-                    <td><img src="assets/images/anuncios/<?php echo $anuncio['url']; ?>" border="0" height="50" /></td>
-                    <td><?php echo $anuncio['titulo']; ?></td>
-                    <td><?php echo number_format($anuncio['valor'], 2, ',', '.'); ?></td>
-                    <td>
-                        <a href="#" class="btn btn-warning btn-sm">Editar</a>
-                        <a href="#" class="btn btn-danger btn-sm">Excluir</a>
-                    </td>
-                </tr>
-            <?php endforeach; ?>
-        </tbody>
+        <?php foreach ($anuncios as $anuncio): ?>
+            <tr>
+                <td>
+                    <?php if (!empty($anuncio['url'])): ?>
+                        <img src="/classificados/assets/images/anuncios/<?php echo $anuncio['url']; ?>"
+                            alt="<?php echo $anuncio['titulo']; ?>" height="50" border="0">
+                    <?php else: ?>
+                        <img src="/classificados/images/default.png" alt="Imagem padrão" height="50" border="0">
+                    <?php endif; ?>
+                    http://localhost/classificados/assets/images/default.png
+                </td>
+                <td><?php echo $anuncio['titulo']; ?></td>
+                <td>R$ <?php echo number_format($anuncio['valor'], 2, ',', '.'); ?></td>
+                <td>
+                    <a href="editar-anuncio.php?id=<?php echo $anuncio['id']; ?>" class="btn btn-primary">Editar</a>
+                    <a href="excluir-anuncio.php?id=<?php echo $anuncio['id']; ?>" class="btn btn-danger">Excluir</a>
+                </td>
+            </tr>
+        <?php endforeach; ?>
+
     </table>
 </div>
-<?php require 'footer.php'; ?>
+
+<?php
+require __DIR__ . '/footer.php';
+?>
