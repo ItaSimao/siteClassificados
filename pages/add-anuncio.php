@@ -1,4 +1,4 @@
-<?php require 'pages/header.php'; ?>
+<?php require 'header.php'; ?>
 <?php
 if (empty($_SESSION['cLogin'])) {
     ?>
@@ -6,7 +6,8 @@ if (empty($_SESSION['cLogin'])) {
     <?php
     exit;
 }
-require 'classes/anuncios.class.php';
+require __DIR__ . '/../classes/anuncios.class.php';
+
 $a = new Anuncios();
 if (isset($_POST['titulo']) && !empty($_POST['titulo'])) {
     $titulo = addslashes($_POST['titulo']);
@@ -34,7 +35,8 @@ if (isset($_POST['titulo']) && !empty($_POST['titulo'])) {
             <label for="categoria">Categoria</label>
             <select name="categoria" id="categoria" class="form-control">
                 <?php
-                require 'classes/categoria.class.php';
+                require __DIR__ . '/../classes/categoria.class.php';
+
                 $c = new Categorias();
                 $cats = $c->getLista();
                 foreach ($cats as $cat):
@@ -72,4 +74,4 @@ if (isset($_POST['titulo']) && !empty($_POST['titulo'])) {
     </form>
 </div>
 
-<?php require 'pages/footer.php'; ?>
+<?php require __DIR__ . '/footer.php'; ?>

@@ -38,7 +38,7 @@ $anuncios = $a->getMeusAnuncios();
                 <td>R$ <?php echo number_format($anuncio['valor'], 2, ',', '.'); ?></td>
                 <td>
                     <a href="editar-anuncio.php?id=<?php echo $anuncio['id']; ?>" class="btn btn-primary">Editar</a>
-                    <a href="excluir-anuncio.php?id=<?php echo $anuncio['id']; ?>" class="btn btn-danger">Excluir</a>
+                    <a href="excluir-anuncios.php?id=<?php echo $anuncio['id']; ?>" class="btn btn-danger">Excluir</a>
                 </td>
             </tr>
         <?php endforeach; ?>

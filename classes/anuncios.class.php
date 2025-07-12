@@ -13,8 +13,8 @@ class Anuncios
              FROM anuncios_imagens 
              WHERE anuncios_imagens.id_anuncio = anuncios.id 
              LIMIT 1) AS url 
-            FROM anuncios 
-            WHERE id_usuario = :id_usuario");
+             FROM anuncios 
+             WHERE id_usuario = :id_usuario");
 
         $sql->bindValue(':id_usuario', $_SESSION['cLogin']);
         $sql->execute();
@@ -25,7 +25,7 @@ class Anuncios
 
         return $array;
     }
-
+    
     public function addAnuncio($titulo, $valor, $descricao, $estado, $categoria)
     {
         global $pdo;
@@ -47,6 +47,19 @@ class Anuncios
         $sql->execute();
 
         return true;
+    }
+
+    public function excluirAnuncio($id)
+    {
+        global $pdo;
+
+        $sql = $pdo->prepare("DELETE FROM anuncios_imagens WHERE id_usuario = :id_usuario");
+        $sql->bindValue(':id_anuncio', $id);
+        $sql->execute();
+
+        $sql = $pdo->prepare("DELETE FROM anuncios WHERE id = :id");
+        $sql->bindValue(':id', $id);
+        $sql->execute();
     }
 
 }
