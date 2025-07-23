@@ -42,10 +42,8 @@ $anuncios = $a->getMeusAnuncios();
                 </td>
             </tr>
         <?php endforeach; ?>
-
     </table>
 </div>
-
 <?php
 require __DIR__ . '/footer.php';
 ?>
