@@ -14,6 +14,5 @@
             <h4> Últimos anúncios</h4>
         </div>
     </div>
-
 </div>
 <?php require 'pages/footer.php'; ?>
