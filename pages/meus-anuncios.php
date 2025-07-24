@@ -18,7 +18,7 @@ $anuncios = $a->getMeusAnuncios();
         <thead>
             <tr>
                 <th>Foto</th>
-                <th>Título</th>
+                <th>Título </th>
                 <th>Valor</th>
                 <th>Ações</th>
             </tr>
