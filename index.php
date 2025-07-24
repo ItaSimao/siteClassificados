@@ -8,7 +8,7 @@
 
     <div class="row">
         <div class="col-sm-4">
-            <h4> Pesquisa avançada</h4>
+            <h4> Pesquisa avançada </h4>
         </div>
         <div class="col-sm-8">
             <h4> Últimos anúncios</h4>
