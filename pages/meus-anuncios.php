@@ -42,6 +42,7 @@ $anuncios = $a->getMeusAnuncios();
                 </td>
             </tr>
         <?php endforeach; ?>
+        
     </table>
 </div>
 <?php
