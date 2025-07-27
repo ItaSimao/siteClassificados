@@ -1,12 +1,12 @@
 <?php 
-session_start();
-if (!isset($_SESSION['cLogin'])) {
+require __DIR__ . '/../config.php';
+
+if (empty($_SESSION['cLogin'])) {
     header('Location: login.php');
     exit;
 }
 
-require __DIR__ . '/../config.php';
-require 'classes/anuncios.class.php';
+require __DIR__ . '/../classes/anuncios.class.php';
 $a = new Anuncios();
 
 if (isset($_GET['id']) && !empty($_GET['id'])) {

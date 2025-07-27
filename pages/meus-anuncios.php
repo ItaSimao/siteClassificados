@@ -30,9 +30,8 @@ $anuncios = $a->getMeusAnuncios();
                         <img src="/classificados/assets/images/anuncios/<?php echo $anuncio['url']; ?>"
                             alt="<?php echo $anuncio['titulo']; ?>" height="50" border="0">
                     <?php else: ?>
-                        <img src="/classificados/images/default.png" alt="Imagem padrão" height="50" border="0">
+                        <img src="/classificados/assets/images/default.png" alt="Imagem padrão" height="50" border="0">
                     <?php endif; ?>
-                    http://localhost/classificados/assets/images/default.png
                 </td>
                 <td><?php echo $anuncio['titulo']; ?></td>
                 <td>R$ <?php echo number_format($anuncio['valor'], 2, ',', '.'); ?></td>
@@ -42,7 +41,7 @@ $anuncios = $a->getMeusAnuncios();
                 </td>
             </tr>
         <?php endforeach; ?>
-        
+
     </table>
 </div>
 <?php

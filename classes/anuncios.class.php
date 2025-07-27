@@ -49,11 +49,29 @@ class Anuncios
         return true;
     }
 
+        public function getAnuncio($id) {
+        $array = array();
+        global $pdo;
+
+        $sql = $pdo->prepare("SELECT * FROM anuncios WHERE id = :id");
+        $sql->bindValue(':id', $id);
+        $sql->execute();
+
+        if ($sql->rowCount() > 0) {
+            $array = $sql->fetch();
+        } else {
+            return false;
+        }
+
+        return $array;
+
+    }
+
     public function excluirAnuncio($id)
     {
         global $pdo;
 
-        $sql = $pdo->prepare("DELETE FROM anuncios_imagens WHERE id_usuario = :id_usuario");
+        $sql = $pdo->prepare("DELETE FROM anuncios_imagens WHERE id_anuncio = :id_anuncio");
         $sql->bindValue(':id_anuncio', $id);
         $sql->execute();
 
