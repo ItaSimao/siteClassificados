@@ -67,7 +67,7 @@ class Anuncios
         $sql->bindValue(':descricao', $descricao);
         $sql->bindValue(':valor', $valor);
         $sql->bindValue(':estado', $estado);
-        $sql->bindValue(':id', $id);
+        $sql->bindValue(':id', $id); // teste 
         $sql->execute();
 
         return true;
