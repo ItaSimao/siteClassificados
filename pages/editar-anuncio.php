@@ -17,7 +17,7 @@ if (isset($_POST['titulo']) && !empty($_POST['titulo'])) {
     $categoria = addslashes($_POST['categoria']);
 
 
-    if ($a->addAnuncio($titulo, $valor, $descricao, $estado, $categoria)) {
+    if ($a->editAnuncio($titulo, $valor, $descricao, $estado, $categoria, $_GET['id'])) {
         ?>
         <div class="alert alert-success">
             Anúncio editado com sucesso!

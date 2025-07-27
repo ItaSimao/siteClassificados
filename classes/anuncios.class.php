@@ -25,7 +25,7 @@ class Anuncios
 
         return $array;
     }
-    
+
     public function addAnuncio($titulo, $valor, $descricao, $estado, $categoria)
     {
         global $pdo;
@@ -49,7 +49,32 @@ class Anuncios
         return true;
     }
 
-        public function getAnuncio($id) {
+    public function editAnuncio($titulo, $valor, $descricao, $estado, $categoria, $id)
+    {
+        global $pdo;
+
+        $sql = $pdo->prepare("UPDATE anuncios SET 
+            id_usuario = :id_usuario, 
+            id_categoria = :id_categoria, 
+            titulo = :titulo, 
+            descricao = :descricao, 
+            valor = :valor, 
+            estado = :estado WHERE id = :id");
+
+        $sql->bindValue(':id_usuario', $_SESSION['cLogin']);
+        $sql->bindValue(':id_categoria', $categoria);
+        $sql->bindValue(':titulo', $titulo);
+        $sql->bindValue(':descricao', $descricao);
+        $sql->bindValue(':valor', $valor);
+        $sql->bindValue(':estado', $estado);
+        $sql->bindValue(':id', $id);
+        $sql->execute();
+
+        return true;
+    }
+
+    public function getAnuncio($id)
+    {
         $array = array();
         global $pdo;
 
