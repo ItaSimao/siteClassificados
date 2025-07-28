@@ -49,6 +49,26 @@ class Anuncios
         return true;
     }
 
+    public function getTotalAnuncios()
+    {
+        global $pdo;
+        $sql = $pdo->query("SELECT COUNT(*) as c FROM anuncios");
+        $row = $sql->fetch();
+        return $row['c'] ?? 0;
+    }
+
+    public function getUltimosAnuncios($limite = 6)
+    {
+        global $pdo;
+        $array = array();
+        $sql = $pdo->prepare("SELECT *, (SELECT anuncios_imagens.url FROM anuncios_imagens WHERE anuncios_imagens.id_anuncio = anuncios.id LIMIT 1) as url FROM anuncios ORDER BY id DESC LIMIT :limite");
+        $sql->bindValue(':limite', (int) $limite, PDO::PARAM_INT);
+        $sql->execute();
+        if ($sql->rowCount() > 0) {
+            $array = $sql->fetchAll();
+        }
+        return $array;
+    }
     public function editAnuncio($titulo, $valor, $descricao, $estado, $categoria, $id)
     {
         global $pdo;
